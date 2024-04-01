@@ -28,4 +28,9 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
     <changeSet id="1.4.2-add_primary_to_user_roles" author="Leo">
         <addPrimaryKey tableName="user_roles" columnNames="user_id,name"/>
     </changeSet>
+    <changeSet id="1.4.3-add_index_into_user" author="Leo">
+        <createIndex tableName="users" indexName="email_idx">
+            <column name="email" />
+        </createIndex>
+    </changeSet>
 </databaseChangeLog>
