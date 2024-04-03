@@ -33,4 +33,7 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
             <column name="email" />
         </createIndex>
     </changeSet>
+    <changeSet id="1.4.4-add-unique-constraint-email" author="Leo">
+        <addUniqueConstraint tableName="users" columnNames="email" />
+    </changeSet>
 </databaseChangeLog>
