@@ -36,4 +36,26 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
     <changeSet id="1.4.4-add-unique-constraint-email" author="Leo">
         <addUniqueConstraint tableName="users" columnNames="email" />
     </changeSet>
+    <changeSet id="1.4.5-drop_user_roles_table" author="Leo">
+        <dropTable tableName="user_roles" />
+    </changeSet>
+    <changeSet id="1.4.6-create_role_table" author="Leo">
+        <createTable tableName="roles">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(100)" defaultValue="unspecified">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1.4.6-create_user_roles_table" author="Leo">
+        <createTable tableName="user_roles">
+            <column name="user_id" type="BIGINT"/>
+            <column name="role_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1.4.7-create-constraint-into-user_roles" author="Leo">
+        <addPrimaryKey tableName="user_roles" columnNames="user_id,role_id" />
+    </changeSet>
 </databaseChangeLog>
