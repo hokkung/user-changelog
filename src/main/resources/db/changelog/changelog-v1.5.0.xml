@@ -1,0 +1,39 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="1.5.1-add_token_table" author="Leo">
+        <createTable tableName="tokens">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="token" type="VARCHAR(456)" defaultValue="">
+                <constraints nullable="false" />
+            </column>
+            <column name="type" type="VARCHAR(50)" defaultValue="BEARER">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="BIGINT" defaultValue="1">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_revoked" type="TINYINT(1)" defaultValueNumeric="1" >
+                <constraints nullable="false" />
+            </column>
+            <column name="is_expired" type="TINYINT(1)" defaultValueBoolean="1" >
+                <constraints nullable="false" />
+            </column>
+            <column name="created_date" type="DATETIME(3)" defaultValueDate="NOW(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_date" type="DATETIME(3)" defaultValueDate="NOW(3)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
